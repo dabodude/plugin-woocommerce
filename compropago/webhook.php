@@ -18,12 +18,14 @@ if ( !empty( $body ) ) {
 		$status = 'pending';
 	} elseif ( $status == 'charge.success' ) {
 		$status = 'processing';
-	}elseif ( $status == 'charge.decline' ) {
+	}elseif ( $status == 'charge.declined' ) {
 		$status = 'refunded';
 	}elseif ( $status == 'charge.deleted' ) {
 		$status = 'refunded';
 	}
-	
+	/*else {die();}
+	Se necesita un escape para estados desconocidos para evitar que woocommerce oculte los pedidos con estos estados.
+*/
 	
 	compropago_status_function( $product_id, $status );
 
